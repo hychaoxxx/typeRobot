@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>typrRobot</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			font-family: '微软雅黑';
+		}
+		.dot{
+			color: blue;
+			font-weight: bold;
+			font-size: 3em;
+			-webkit-animation: i .7s infinite;
+    		animation: i .7s infinite;
+		}
+		.para{
+			font-size: 3em;
+		}
+		p{
+			display: none;
+		}
+		@keyframes i{
+			0% {
+    			opacity: 1;
+			}
+			50% {
+    			opacity: 0;
+			}
+			100% {
+    			opacity: 1;
+			}
+		}
+	</style>
+</head>
+<body>
+	<span class="para"></span>
+	<span class="dot">|</span>
+	<script src="jquery-2.2.3.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		var typeRobot = function(str){
+			this.str = str;
+			var i = 0;
+			var int = setInterval(function(){
+				var arr = str.substr(0,i);
+				$('.para').html(arr);
+				i++;
+			},100);
+			if (i === str.length - 1) {
+				clearInterval(int);
+			}else{
+				return true;
+			}
+		};
+		typeRobot('JavaScript is awesome!');
+	});
+	</script>
+</body>
+</html>
